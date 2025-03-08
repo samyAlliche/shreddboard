@@ -1,0 +1,31 @@
+import React from "react";
+
+interface AddStickyButtonProps {
+  onClick: () => void;
+}
+
+const AddStickyButton: React.FC<AddStickyButtonProps> = ({ onClick }) => {
+  return (
+    <button
+      onClick={onClick}
+      className="p-4 border-stickyYellow-500 flex items-center space-x-2 px-4 py-2 dark:text-stickyYellow-500 text-dark-500 transition-colors hover:bg-stickyYellow-500 duration-100 ease-in-out w-full aspect-square flex-col justify-center"
+    >
+      <svg
+        viewBox="0 0 22 22"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+        height="22"
+        width="22"
+        className="w-12 h-12"
+      >
+        <desc>Add Box Line Streamline Icon: https://streamlinehq.com</desc>
+        <path
+          d="M2.6666666666666665 2h10.666666666666666c0.36819999999999997 0 0.6666666666666666 0.29847999999999997 0.6666666666666666 0.6666666666666666v10.666666666666666c0 0.36819999999999997 -0.29846666666666666 0.6666666666666666 -0.6666666666666666 0.6666666666666666H2.6666666666666665c-0.36818666666666666 0 -0.6666666666666666 -0.29846666666666666 -0.6666666666666666 -0.6666666666666666V2.6666666666666665c0 -0.36818666666666666 0.29847999999999997 -0.6666666666666666 0.6666666666666666 -0.6666666666666666Zm0.6666666666666666 1.3333333333333333v9.333333333333332h9.333333333333332V3.333333333333333H3.333333333333333Zm4 4V4.666666666666666h1.3333333333333333v2.6666666666666665h2.6666666666666665v1.3333333333333333h-2.6666666666666665v2.6666666666666665h-1.3333333333333333v-2.6666666666666665H4.666666666666666v-1.3333333333333333h2.6666666666666665Z"
+          strokeWidth="0.6667"
+        />
+      </svg>
+    </button>
+  );
+};
+
+export default AddStickyButton;

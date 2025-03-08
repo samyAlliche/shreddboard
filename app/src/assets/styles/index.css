@@ -1,0 +1,563 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+@theme {
+  --font-base: "Helvetica", "sans-serif";
+
+  --color-stickyYellow-500: oklch(92.7% 0.19446350804519538 103.22761174138306);
+  --color-stickyOrange-500: oklch(80.12% 0.16 69.62);
+  --color-stickyBlue-500: oklch(81.23% 0.0527 234.17);
+  --color-stickyGreen-500: oklch(79.65% 0.1539 122.62);
+  --color-stickyPink-500: oklch(86.66% 0.0661 350.23);
+  --color-dark-500: oklch(13.36% 0.0064 354.49);
+}
+
+/* html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+} */
+
+/* body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url("/grain.svg") repeat;
+
+  opacity: 0.3;
+  pointer-events: none;
+} */
+
+.animate-shredded-paper {
+  -webkit-animation: shredGo 3s 1 forwards;
+  animation: shredGo 3s 1 forwards;
+}
+
+.animate-content {
+  animation: cover 2.6s 1 forwards 1s;
+  -webkit-animation: cover 2.2s 1 forwards 1s;
+}
+
+.shredded-holder-animate {
+  animation: shredShake 0.12s 26 0.5s;
+  -webkit-animation: shredShake 0.12s 26 0.5s;
+}
+
+.shredded-paper-p-animate {
+  animation: Animation1 2.8s 1 forwards 1s;
+  -webkit-animation: Animation1 2.8s 1 forwards 1s;
+}
+
+.shredded-paper-q-animate {
+  animation: Animation2 2.8s 1 forwards 1s;
+  -webkit-animation: Animation2 2.8s 1 forwards 1s;
+}
+
+.shredded-paper {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+  z-index: 5;
+}
+
+.shredded-paper > div[class^="part-"] {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  position: absolute;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  z-index: 99;
+  top: 0;
+}
+
+.shredded-paper > .content {
+  background: #fff;
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 100%;
+  -moz-box-sizing: border-box;
+  position: absolute;
+  -webkit-transform: translateZ(180px) scale(0.82);
+  top: 0;
+  z-index: 9999;
+}
+
+.shredded-paper .part-1 {
+  clip: rect(0, 40px, 300px, 0);
+  background: #fff;
+  background: -webkit-radial-gradient(
+      32% 97%,
+      29% 62%,
+      rgba(0, 0, 0, 0.3),
+      rgba(255, 255, 255, 0)
+    )
+    #fff;
+  background: radial-gradient(
+      circle at 64% 0%,
+      rgb(134, 134, 134),
+      rgba(255, 255, 255, 0)
+    )
+    repeat scroll 0% 0% rgb(255, 255, 255);
+}
+.shredded-paper .part-2 {
+  clip: rect(0, 80px, 300px, 40px);
+  background: #fff;
+  background: -webkit-radial-gradient(
+      28% 11%,
+      16% 62%,
+      rgba(0, 0, 0, 0.3),
+      rgba(255, 255, 255, 0)
+    )
+    #fff;
+  background: radial-gradient(
+      circle at 109% 0%,
+      rgb(134, 134, 134),
+      rgba(255, 255, 255, 0)
+    )
+    repeat scroll 0% 0% rgb(255, 255, 255);
+}
+.shredded-paper .part-3 {
+  clip: rect(0, 120px, 300px, 80px);
+  background: #fff;
+  background: -webkit-radial-gradient(
+      12% 88%,
+      23% 62%,
+      rgba(0, 0, 0, 0.3),
+      rgba(255, 255, 255, 0)
+    )
+    #fff;
+  background: radial-gradient(
+      circle at 167% 173%,
+      rgb(134, 134, 134),
+      rgba(255, 255, 255, 0)
+    )
+    repeat scroll 0% 0% rgb(255, 255, 255);
+}
+.shredded-paper .part-4 {
+  clip: rect(0, 160px, 300px, 120px);
+  background: #fff;
+  background: -webkit-radial-gradient(
+      73% 9%,
+      65% 52%,
+      rgba(0, 0, 0, 0.3),
+      rgba(255, 255, 255, 0)
+    )
+    #fff;
+  background: radial-gradient(
+      circle at 118% -54%,
+      rgb(134, 134, 134),
+      rgba(255, 255, 255, 0)
+    )
+    repeat scroll 0% 0% rgb(255, 255, 255);
+}
+.shredded-paper .part-5 {
+  clip: rect(0, 200px, 300px, 160px);
+  background: #fff;
+  background: -webkit-radial-gradient(
+      23% 97%,
+      29% 62%,
+      rgba(0, 0, 0, 0.3),
+      rgba(255, 255, 255, 0)
+    ),
+    -webkit-radial-gradient(
+        72% 20%,
+        29% 62%,
+        rgba(0, 0, 0, 0.3),
+        rgba(255, 255, 255, 0)
+      ) #fff;
+  background: radial-gradient(
+      circle at 127% 57%,
+      rgb(134, 134, 134),
+      rgba(255, 255, 255, 0)
+    )
+    repeat scroll 0% 0% rgb(255, 255, 255);
+}
+.shredded-paper .part-6 {
+  clip: rect(0, 240px, 300px, 200px);
+  background: #fff;
+  background: -webkit-radial-gradient(
+      85% 97%,
+      46% 57%,
+      rgba(0, 0, 0, 0.3),
+      rgba(255, 255, 255, 0)
+    )
+    #fff;
+  background: radial-gradient(
+      circle at 116% -103%,
+      rgb(134, 134, 134),
+      rgba(255, 255, 255, 0)
+    )
+    repeat scroll 0% 0% rgb(255, 255, 255);
+}
+.shredded-paper .part-7 {
+  clip: rect(0, 280px, 300px, 240px);
+  background: #fff;
+  background: -webkit-radial-gradient(
+      85% 24%,
+      29% 62%,
+      rgba(0, 0, 0, 0.3),
+      rgba(255, 255, 255, 0)
+    )
+    #fff;
+  background: radial-gradient(
+      circle at 155% 143%,
+      rgb(134, 134, 134),
+      rgba(255, 255, 255, 0)
+    )
+    repeat scroll 0% 0% rgb(255, 255, 255);
+}
+.shredded-paper .part-8 {
+  clip: rect(0, 320px, 300px, 280px);
+  background: #fff;
+  background: -webkit-radial-gradient(
+      104% 93%,
+      46% 52%,
+      rgba(0, 0, 0, 0.3),
+      rgba(255, 255, 255, 0)
+    )
+    #fff;
+  background: radial-gradient(
+      circle at 241% 154%,
+      rgb(134, 134, 134),
+      rgba(255, 255, 255, 0)
+    )
+    repeat scroll 0% 0% rgb(255, 255, 255);
+}
+.shredded-paper .part-9 {
+  clip: rect(0, 360px, 300px, 320px);
+  background: #fff;
+  background: -webkit-radial-gradient(
+      39% 18%,
+      73% 52%,
+      rgba(0, 0, 0, 0.3),
+      rgba(255, 255, 255, 0)
+    )
+    #fff;
+  background: radial-gradient(
+      circle at 170% -219%,
+      rgb(134, 134, 134),
+      rgba(255, 255, 255, 0)
+    )
+    repeat scroll 0% 0% rgb(255, 255, 255);
+}
+.shredded-paper .part-10 {
+  clip: rect(0, 400px, 300px, 360px);
+  background: #fff;
+  background: -webkit-radial-gradient(
+      77% 97%,
+      29% 62%,
+      rgba(0, 0, 0, 0.3),
+      rgba(255, 255, 255, 0)
+    )
+    #fff;
+  background: radial-gradient(
+      circle at 217% 150%,
+      rgb(134, 134, 134),
+      rgba(255, 255, 255, 0)
+    )
+    repeat scroll 0% 0% rgb(255, 255, 255);
+}
+
+.shredder-holder {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 450px;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.shredder {
+  font-weight: bold;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  height: 100px;
+  z-index: 9999999;
+  text-align: center;
+  color: val(--color-dark-500);
+}
+.glass-container {
+  position: relative;
+  width: 100%;
+  height: calc(50vh - 100px);
+  padding: 20px;
+  background: rgba(122, 122, 122, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(0.5px);
+  -webkit-backdrop-filter: blur(0.5px);
+  border: 1px solid rgba(122, 122, 122, 0.3);
+  text-align: center;
+}
+@media (max-width: 640px) {
+  .shredder-holder {
+    width: 100%;
+    left: 0;
+    transform: none;
+    padding: 0 1rem; /* Optional padding so content doesn't touch screen edges */
+  }
+  .shredder,
+  .glass-container {
+    width: 100%;
+  }
+  .glass-container {
+    height: calc(40vh - 100px); /* Assuming the shredder height is 100px */
+  }
+}
+
+.shred-me {
+  font-weight: bold;
+  background: #61baff;
+  color: #fff;
+  cursor: pointer;
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  padding: 18px 10px;
+  font-size: 1.5em;
+  position: absolute;
+  top: 236px;
+}
+
+.shred-me:hover {
+  background: rgb(30, 112, 176);
+}
+
+.shred-me:active {
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.alert {
+  padding: 23px 20px 20px 28px;
+  border-radius: 100px;
+  background: #bb4040;
+  color: #fff;
+  font-size: 2.6em;
+  width: 100px;
+  height: 100px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  margin: 10px auto;
+  z-index: 999;
+  position: relative;
+  top: 52px;
+  z-index: 999;
+  position: relative;
+  top: 52px;
+}
+
+@-webkit-keyframes shredGo {
+  10% {
+    top: 20px;
+  }
+  12% {
+    top: 15px;
+  }
+  30% {
+    top: 150px;
+  }
+  32% {
+    top: 145px;
+  }
+  60% {
+    top: 320px;
+  }
+  62% {
+    top: 315px;
+  }
+  68% {
+    top: 380px;
+  }
+  100% {
+    top: 400px;
+  }
+}
+
+@keyframes shredGo {
+  10% {
+    top: 20px;
+  }
+  12% {
+    top: 15px;
+  }
+  30% {
+    top: 150px;
+  }
+  32% {
+    top: 145px;
+  }
+  60% {
+    top: 320px;
+  }
+  62% {
+    top: 315px;
+  }
+  68% {
+    top: 380px;
+  }
+  100% {
+    top: 400px;
+  }
+}
+
+@-webkit-keyframes shredShake {
+  50% {
+    top: 105px;
+  }
+  100% {
+    top: 95px;
+  }
+}
+
+@keyframes shredShake {
+  50% {
+    top: 105px;
+  }
+  100% {
+    top: 95px;
+  }
+}
+
+@-webkit-keyframes cover {
+  30% {
+    top: -25px;
+  }
+  80% {
+    height: 20%;
+  }
+  100% {
+    top: 0;
+    height: 0;
+  }
+}
+
+@keyframes cover {
+  30% {
+    top: -25px;
+  }
+  80% {
+    height: 20%;
+  }
+  100% {
+    height: 0;
+    top: -5px;
+  }
+}
+
+@keyframes Animation1 {
+  20% {
+    transform: scaleY(1.1) rotateX(5deg);
+  }
+  50% {
+    transform: scaleY(1.1) rotateX(-5deg);
+    top: 0;
+  }
+  90% {
+    transform: scaleY(1.1) rotateX(10deg);
+    top: 400px;
+  }
+  100% {
+    transform: scaleY(1.1) rotateX(10deg);
+    top: 1200px;
+  }
+}
+
+@-webkit-keyframes Animation1 {
+  20% {
+    -webkit-transform: scaleY(1.1) rotateX(5deg);
+  }
+  50% {
+    -webkit-transform: scaleY(1.1) rotateX(-5deg);
+    top: 0;
+  }
+  90% {
+    -webkit-transform: scaleY(1.1) rotateX(10deg);
+    top: 400px;
+  }
+  100% {
+    -webkit-transform: scaleY(1.1) rotateX(10deg);
+    top: 1200px;
+  }
+}
+
+@keyframes Animation2 {
+  20% {
+    transform: scaleY(1.1) rotateX(-5deg);
+  }
+  50% {
+    transform: scaleY(1.1) rotateX(-5deg);
+    top: 0;
+  }
+  90% {
+    transform: scaleY(1.1) rotateX(-10deg);
+    top: 400px;
+  }
+  100% {
+    transform: scaleY(1.1) rotateX(-10deg);
+    top: 1200px;
+  }
+}
+
+@-webkit-keyframes Animation2 {
+  20% {
+    -webkit-transform: scaleY(1.1) rotateX(-5deg);
+  }
+  50% {
+    -webkit-transform: scaleY(1.1) rotateX(-5deg);
+    top: 0;
+  }
+  90% {
+    -webkit-transform: scaleY(1.1) rotateX(-10deg);
+    top: 400px;
+  }
+  100% {
+    -webkit-transform: scaleY(1.1) rotateX(-10deg);
+    top: 1200px;
+  }
+}
+
+/* ==================== IGNORE */
+
+.go-back a {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 10px 20px;
+  color: #fff;
+  font-size: 1.3em;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 10px;
+}
+
+.go-back a i {
+  font-size: 0.7em;
+  margin: 0 10px 0 0;
+}
+
+.go-back a:hover {
+  background: rgb(30, 112, 176);
+}
+
+.go-back a:active {
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3);
+}
